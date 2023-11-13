@@ -4,50 +4,27 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('run.sh') {
 
             steps {
 
-                sh 'echo "Building..."'
-
-                sh 'ls -al'
+                sh '''
+                sh run.sh
+                '''
 
             }
 
         }
 
-        stage('Test') {
+        stage('Hello') {
 
             steps {
-
-                sh 'echo "Testing..."'
-
-                sh 'pwd'
-
-                sh 'touch testfile.txt'
-
-                sh 'ls -l'
-
+                sh '''
+                echo "Pipeline Test"
+                '''
             }
 
         }
-
-        stage('Deploy') {
-
-            steps {
-
-                sh 'cat ./deploy.sh'
-
-                sh 'echo "Deploying..."'
-
-                sh 'mv testfile.txt /tmp'
-
-                sh 'ls -l /tmp'
-
-            }
-
-        }
-
     }
 
 }
